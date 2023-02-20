@@ -15,8 +15,19 @@
 
 .App-header {
     width: 100%;
-    background-color: #282c34;
+    background-color: #0e3d9a;
     min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+.rectangle {
+    width: 100px;
+    background-color: #ff0808;
+    min-height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
