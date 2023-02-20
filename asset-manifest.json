@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/tasks/static/css/main.39f589df.css",
-    "main.js": "/tasks/static/js/main.6a24c515.js",
+    "main.css": "/tasks/static/css/main.84369574.css",
+    "main.js": "/tasks/static/js/main.e8b0e64d.js",
     "static/js/787.4ef7427d.chunk.js": "/tasks/static/js/787.4ef7427d.chunk.js",
+    "static/media/Doge-meme-2-1536x922.webp": "/tasks/static/media/Doge-meme-2-1536x922.315cca4c90a2ce343f87.webp",
     "index.html": "/tasks/index.html",
-    "main.39f589df.css.map": "/tasks/static/css/main.39f589df.css.map",
-    "main.6a24c515.js.map": "/tasks/static/js/main.6a24c515.js.map",
+    "main.84369574.css.map": "/tasks/static/css/main.84369574.css.map",
+    "main.e8b0e64d.js.map": "/tasks/static/js/main.e8b0e64d.js.map",
     "787.4ef7427d.chunk.js.map": "/tasks/static/js/787.4ef7427d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.39f589df.css",
-    "static/js/main.6a24c515.js"
+    "static/css/main.84369574.css",
+    "static/js/main.e8b0e64d.js"
   ]
 }
