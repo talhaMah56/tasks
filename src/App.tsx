@@ -34,10 +34,12 @@ function App(): JSX.Element {
             <Container>
                 <Row>
                     <Col>
-                        <div className="rectangle">First column.</div>
+                        First column.
+                        <div className="rectangle"></div>
                     </Col>
                     <Col>
-                        <div className="rectangle">Second column.</div>
+                        Second column
+                        <div className="rectangle"></div>
                     </Col>
                 </Row>
             </Container>

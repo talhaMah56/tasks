@@ -28,12 +28,9 @@
     width: 100px;
     background-color: #ff0808;
     min-height: 100px;
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: right;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
 }
 
 .App-link {
