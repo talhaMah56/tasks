@@ -43,7 +43,17 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    let tempStr: string[] = [...amounts];
+
+    //console.log(tempStr[0][0] == "$" ? tempStr[0].substring(1) : tempStr[1][0]);
+    //I am removing the dollar sign from each string
+
+    //also works str.replace("$", "")
+    tempStr = tempStr.map((str: string): string =>
+        str[0] == "$" ? str.substring(1) : str
+    );
+
+    return stringsToIntegers(tempStr);
 };
 
 /**
@@ -52,7 +62,14 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    let tempStr: string[] = [...messages];
+    tempStr = tempStr.map((str: string): string =>
+        str.endsWith("!") ? str.toUpperCase() : str
+    );
+    //This will remove any strings containing a "!" in the end, the
+    // ! before the str.endsWidth() is to make sure the strings without the "!" in the end
+    // remain in the list
+    return tempStr.filter((str: string): boolean => !str.endsWith("?"));
 };
 
 /**
