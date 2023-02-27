@@ -91,7 +91,16 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    let tempStr: string[] = [...colors];
+    let allRGB = true;
+    tempStr = colors.filter(
+        // Check if the string is red, blue or green"
+        (aColor: string): boolean =>
+            aColor == "red" || aColor == "blue" || aColor == "green"
+                ? true
+                : (allRGB = false)
+    );
+    return allRGB;
 }
 
 /**
