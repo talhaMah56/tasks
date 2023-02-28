@@ -93,7 +93,7 @@ export function countShortWords(words: string[]): number {
 export function allRGB(colors: string[]): boolean {
     let tempStr: string[] = [...colors];
     let allRGB = true;
-    tempStr = colors.filter(
+    tempStr = tempStr.filter(
         // Check if the string is red, blue or green"
         (aColor: string): boolean =>
             aColor == "red" || aColor == "blue" || aColor == "green"
@@ -111,7 +111,24 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    //If the if statment isn't true return "0=0"
+    //Else do the whole process
+    if (addends.length > 0) {
+        const tempAddends: number[] = [...addends];
+        const sum = tempAddends.reduce(
+            (currentTotal: number, num: number) => currentTotal + num,
+            0
+        );
+
+        //Convert the whole array into a string using .toString()
+        //And then replace all commas with addition sign
+        //Add sum = and the string together and return it
+        return sum
+            .toString()
+            .concat("=")
+            .concat(tempAddends.toString().replaceAll(",", "+"));
+    }
+    return "0=0";
 }
 
 /**
