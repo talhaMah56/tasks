@@ -23,9 +23,10 @@ export function add3(first: number, second: number, third: number): number {
         sum += third;
     }
     return sum;
-    /**sum = first > 0 ? sum +first
-    :sum = second >0 ? sum + second
-    :sum = third > 0 ? sum + third
+    /**
+    sum = first > 0 ? sum + first
+    sum = second >0 ? sum + second
+    sum = third > 0 ? sum + third
 
     return sum;**/
 }
