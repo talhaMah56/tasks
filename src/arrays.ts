@@ -111,10 +111,10 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
+    const tempAddends: number[] = [...addends];
     //If the if statment isn't true return "0=0"
     //Else do the whole process
-    if (addends.length > 0) {
-        const tempAddends: number[] = [...addends];
+    if (tempAddends.length > 0) {
         const sum = tempAddends.reduce(
             (currentTotal: number, num: number) => currentTotal + num,
             0
@@ -141,5 +141,29 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const tempArray: number[] = [...values];
+
+    const findNegativeIndex = (numbers: number[]): number =>
+        numbers.findIndex((number: number): boolean => number < 0);
+
+    if (findNegativeIndex(tempArray) >= 0) {
+        console.log("here");
+        const sum: number = tempArray
+            .slice(0, findNegativeIndex(tempArray))
+            .reduce(
+                (currentTotal: number, num: number) => currentTotal + num,
+                0
+            );
+        console.log("Before", tempArray);
+        tempArray.splice(findNegativeIndex(tempArray) + 1, 0, sum);
+        console.log("After", tempArray);
+        return tempArray;
+    } else {
+        const sum: number = tempArray.reduce(
+            (currentTotal: number, num: number) => currentTotal + num,
+            0
+        );
+        tempArray.splice(tempArray.length, 0, sum);
+        return tempArray;
+    }
 }
