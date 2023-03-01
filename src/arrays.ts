@@ -91,9 +91,9 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    let tempStr: string[] = [...colors];
+    const tempStr: string[] = [...colors];
     let allRGB = true;
-    tempStr = tempStr.filter(
+    tempStr.filter(
         // Check if the string is red, blue or green"
         (aColor: string): boolean =>
             aColor == "red" || aColor == "blue" || aColor == "green"
