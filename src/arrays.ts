@@ -154,9 +154,7 @@ export function injectPositive(values: number[]): number[] {
                 (currentTotal: number, num: number) => currentTotal + num,
                 0
             );
-        console.log("Before", tempArray);
         tempArray.splice(findNegativeIndex(tempArray) + 1, 0, sum);
-        console.log("After", tempArray);
         return tempArray;
     } else {
         const sum: number = tempArray.reduce(
