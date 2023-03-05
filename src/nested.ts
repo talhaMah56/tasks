@@ -10,11 +10,9 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    //const deepCopy = ghibliMovies.map((movie: Movie): Movie => ({...movie}));
     const deepCopy = questions.map(
         (quest: Question): Question => ({ ...quest })
     );
-
     const quest = deepCopy.filter(
         (aQuest: Question): boolean => aQuest.published
     );
@@ -27,7 +25,19 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (quest: Question): Question => ({ ...quest })
+    );
+    const quests = deepCopy.filter(
+        (quest: Question): boolean =>
+            !(
+                quest.body === "" &&
+                quest.expected === "" &&
+                quest.options.length >= 0
+            )
+    );
+
+    return quests;
 }
 
 /***
