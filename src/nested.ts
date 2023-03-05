@@ -2,11 +2,23 @@ import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
+ * 
+
+
+/**
  * Consumes an array of questions and returns a new array with only the questions
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    return [];
+    //const deepCopy = ghibliMovies.map((movie: Movie): Movie => ({...movie}));
+    const deepCopy = questions.map(
+        (quest: Question): Question => ({ ...quest })
+    );
+
+    const quest = deepCopy.filter(
+        (aQuest: Question): boolean => aQuest.published
+    );
+    return quest;
 }
 
 /**
