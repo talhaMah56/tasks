@@ -2,10 +2,6 @@ import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
- * 
-
-
-/**
  * Consumes an array of questions and returns a new array with only the questions
  * that are `published`.
  */
@@ -60,7 +56,11 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const quest = questions.filter(
+        (aQuestion: Question): boolean => !(aQuestion.id === id)
+    );
+
+    return quest;
 }
 
 /***
@@ -68,7 +68,8 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const names = questions.map((quest: Question): string => quest.name);
+    return names;
 }
 
 /***
