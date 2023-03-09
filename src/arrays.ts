@@ -147,7 +147,6 @@ export function injectPositive(values: number[]): number[] {
         numbers.findIndex((number: number): boolean => number < 0);
 
     if (findNegativeIndex(tempArray) >= 0) {
-        console.log("here");
         const sum: number = tempArray
             .slice(0, findNegativeIndex(tempArray))
             .reduce(
