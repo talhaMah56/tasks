@@ -1,5 +1,7 @@
+/* eslint-disable indent */
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -128,7 +130,16 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    //const an: Answer = {questionId: questions[0].id, text: "", submitted: false, correct: false};
+    const answers: Answer[] = questions.map(
+        (aQuest: Question): Answer => ({
+            questionId: aQuest.id,
+            text: "",
+            submitted: false,
+            correct: false
+        })
+    );
+    return answers;
 }
 
 /***
@@ -136,7 +147,10 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (quest: Question): Question => ({ ...quest, published: true })
+    );
+    return deepCopy;
 }
 
 /***
@@ -144,7 +158,16 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    //Try using every
+    if (questions.length > 0) {
+        const Atype: QuestionType = questions[0].type;
+        //console.log(Atype);
+        const check: Question[] = questions.filter(
+            (quest: Question): boolean => quest.type === Atype
+        );
+        return questions.length === check.length;
+    }
+    return true;
 }
 
 /***
@@ -158,7 +181,11 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (quest: Question): Question => ({ ...quest })
+    );
+    deepCopy.splice(deepCopy.length, 0, makeBlankQuestion(id, name, type));
+    return deepCopy;
 }
 
 /***
@@ -171,7 +198,11 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (quest: Question): Question =>
+            quest.id === targetId ? { ...quest, name: newName } : { ...quest }
+    );
+    return deepCopy;
 }
 
 /***
@@ -186,7 +217,14 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (quest: Question): Question =>
+            quest.id === targetId &&
+            newQuestionType !== "multiple_choice_question"
+                ? { ...quest, type: newQuestionType, options: [] }
+                : { ...quest }
+    );
+    return deepCopy;
 }
 
 /**
@@ -205,7 +243,32 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const insertNewOption = (
+        options: string[],
+        targetOptionIndex: number,
+        newOption: string
+    ): string[] => {
+        let Options = [...options];
+        if (targetOptionIndex === -1) {
+            Options = [...Options, newOption];
+        } else {
+            Options.splice(targetOptionIndex, 1, newOption);
+        }
+        return Options;
+    };
+    return questions.map(
+        (question: Question): Question =>
+            question.id === targetId
+                ? {
+                      ...question,
+                      options: insertNewOption(
+                          question.options,
+                          targetOptionIndex,
+                          newOption
+                      )
+                  }
+                : { ...question, options: [...question.options] }
+    );
 }
 
 /***
@@ -219,5 +282,16 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (quest: Question): Question => ({ ...quest })
+    );
+    const targetIndex = questions.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    deepCopy.splice(
+        targetIndex + 1,
+        0,
+        duplicateQuestion(newId, questions[targetIndex])
+    );
+    return deepCopy;
 }
