@@ -28,7 +28,7 @@ export function ChangeType(): JSX.Element {
     }
     return (
         <div>
-            <button onClick={changeVisibility}>Change Type </button>
+            <Button onClick={changeVisibility}>Change Type </Button>
             {visible === "short_answer_question" && <div>Short Answer</div>}
             {visible === "multiple_choice_question" && (
                 <div>Multiple Choice</div>
