@@ -34,9 +34,9 @@ export function RevealAnswer(): JSX.Element {
     }
     return (
         <div>
-            <button onClick={changeVisibility}>
+            <Button onClick={changeVisibility}>
                 There is a Reveal Answer button
-            </button>
+            </Button>
             {visible && <div>42</div>}
         </div>
     );
