@@ -11,7 +11,6 @@ export function CheckAnswer({
     function UpdateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
         setAnswer(event.target.value);
     }
-
     return (
         <div>
             <Form.Group controlId="formMovieName">
