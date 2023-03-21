@@ -25,7 +25,7 @@ export function GiveAttempts(): JSX.Element {
     return (
         <div>
             <Form.Group controlId="formMovieReleased">
-                <Form.Label>Released:</Form.Label>
+                <Form.Label>How many more attepts you want?</Form.Label>
                 <Form.Control
                     type="number"
                     value={gain}

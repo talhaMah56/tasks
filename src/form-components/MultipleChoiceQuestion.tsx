@@ -9,19 +9,20 @@ export function MultipleChoiceQuestion({
     expectedAnswer: string;
 }): JSX.Element {
     // This is the State (Model)
-    const [favorite, setFavorite] = useState<string>(options[0]);
+    const [selected, setSelected] = useState<string>(options[0]);
 
     // This is the Control
-    function updateFavorite(event: React.ChangeEvent<HTMLSelectElement>) {
-        setFavorite(event.target.value);
+    function updateSelected(event: React.ChangeEvent<HTMLSelectElement>) {
+        setSelected(event.target.value);
     }
 
     // This is the View
     return (
         <div>
-            <Form.Group controlId="favoriteColors">
-                <Form.Label>What is your favorite color?</Form.Label>
-                <Form.Select value={favorite} onChange={updateFavorite}>
+            <h5>Multiple Choice Question</h5>
+            <Form.Group controlId="Options">
+                <Form.Label>Select an Answer</Form.Label>
+                <Form.Select value={selected} onChange={updateSelected}>
                     {options.map((color: string) => (
                         <option key={color} value={color}>
                             {color}
@@ -29,7 +30,7 @@ export function MultipleChoiceQuestion({
                     ))}
                 </Form.Select>
             </Form.Group>
-            <div>Result: {favorite === expectedAnswer ? "✔️" : "❌"}.</div>
+            <div>Result: {selected === expectedAnswer ? "✔️" : "❌"}.</div>
         </div>
     );
 }

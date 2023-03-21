@@ -16,6 +16,7 @@ export function ChangeColor(): JSX.Element {
 
     return (
         <div>
+            <h5>CHANGE COLOR</h5>
             {COLORS.map((color: string) => (
                 <Form.Check
                     inline
