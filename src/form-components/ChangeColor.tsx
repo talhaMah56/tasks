@@ -31,7 +31,7 @@ export function ChangeColor(): JSX.Element {
                 />
             ))}
             <p>
-                Your favorite Color is{" "}
+                You have chosen{" "}
                 <span
                     data-testid="colored-box"
                     style={{ backgroundColor: `${favorite}` }}

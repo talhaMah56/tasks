@@ -24,7 +24,6 @@ function App(): JSX.Element {
                 UD CISC275 with React Hooks and TypeScript
                 <h1>Talha Mahmood</h1>
             </header>
-            <p>Hello World</p>
             <hr></hr>
             <CheckAnswer expectedAnswer="42"></CheckAnswer>
             <hr></hr>
